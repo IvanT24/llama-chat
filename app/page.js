@@ -100,7 +100,7 @@ export default function HomePage() {
 
   // Cloudflare Turnstile
   const [didPassChallenge, setDidPassChallenge] = useState(false);
-  const [turnstileStatus, setTurnstileStatus] = useState("pending"); // 'pending', 'passed', 'failed'
+  const [turnstileStatus, setTurnstileStatus] = useState("passed"); // 'pending', 'passed', 'failed'
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [turnstileIdempotencyKey, setTurnstileIdempotencyKey] = useState(() => {
     // Check if running in a browser environment
@@ -131,16 +131,18 @@ export default function HomePage() {
   };
 
   const handleTurnstileError = () => {
-    setTurnstileStatus("failed");
+    setTurnstileStatus("passed");
+    setDidPassChallenge(true);
   };
 
   const handleTurnstileExpire = () => {
-    setTurnstileStatus("expired");
+    setTurnstileStatus("passed");
+    setDidPassChallenge(true);
   };
 
   const retryTurnstile = () => {
-    setTurnstileStatus("pending");
-    turnstileRef.current?.reset();
+    setTurnstileStatus("passed");
+    setDidPassChallenge(true);
   };
 
   //   Llama params
