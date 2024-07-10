@@ -30,3 +30,34 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Node.js dependencies
+node_modules
+npm-debug.log
+
+# Environment variables
+.env.local
+
+# Build output
+.next
+
+# Logs
+logs
+*.log
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Mac system files
+.DS_Store
+
+# Docker files
+docker-compose.yml
+.dockerignore
+
